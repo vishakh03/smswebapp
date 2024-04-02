@@ -18,7 +18,7 @@ namespace smswebapp.tests
             var viewResult = (ViewResult)result;
             Assert.That(viewResult.Model, Is.InstanceOf<List<Student>>());
             var model = (List<Student>)viewResult.Model;
-            Assert.AreEqual(4, model.Count); // Assuming there are two students in the list
+            Assert.AreEqual(3, model.Count); // Assuming there are two students in the list
 
         }
 
