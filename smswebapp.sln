@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smswebapp", "smswebapp\smswebapp.csproj", "{12756244-CA8B-4499-906C-46F53E108486}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smswebapp.tests", "smswebapp.tests\smswebapp.tests.csproj", "{EF81F962-2895-4D05-BC5D-CEB52CF6719D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{12756244-CA8B-4499-906C-46F53E108486}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12756244-CA8B-4499-906C-46F53E108486}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12756244-CA8B-4499-906C-46F53E108486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF81F962-2895-4D05-BC5D-CEB52CF6719D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF81F962-2895-4D05-BC5D-CEB52CF6719D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF81F962-2895-4D05-BC5D-CEB52CF6719D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF81F962-2895-4D05-BC5D-CEB52CF6719D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
