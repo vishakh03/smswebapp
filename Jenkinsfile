@@ -1,12 +1,10 @@
 pipeline {
     agent any
 
-    environment {
-        // This is not needed unless you are setting a specific DOTNET_CLI_HOME
-        // For most cases, the default will work.
-        // Remove if unnecessary
-        DOTNET_CLI_HOME = "${env.WORKSPACE}"
-    }
+   environment {
+    PATH = "C:\\Windows\\System32;${env.PATH}"
+}
+
 
     stages {
         stage('Checkout') {
