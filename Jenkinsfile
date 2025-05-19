@@ -1,10 +1,9 @@
 pipeline {
     agent any
 
-   environment {
-    PATH = "C:\\Windows\\System32;${env.PATH}"
-}
-
+    environment {
+        PATH = "C:\\Windows\\System32;C:\\Program Files\\dotnet;${env.PATH}"
+    }
 
     stages {
         stage('Checkout') {
