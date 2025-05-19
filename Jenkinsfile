@@ -2,7 +2,10 @@ pipeline {
     agent any
 
     environment {
-        DOTNET_CLI_HOME = "C:\\Program Files\\dotnet"
+        // This is not needed unless you are setting a specific DOTNET_CLI_HOME
+        // For most cases, the default will work.
+        // Remove if unnecessary
+        DOTNET_CLI_HOME = "${env.WORKSPACE}"
     }
 
     stages {
@@ -12,41 +15,37 @@ pipeline {
             }
         }
 
+        stage('Restore') {
+            steps {
+                bat 'dotnet restore'
+            }
+        }
+
         stage('Build') {
             steps {
-                script {
-                    // Restoring dependencies
-                    //bat "cd ${DOTNET_CLI_HOME} && dotnet restore"
-                    bat "dotnet restore"
-
-                    // Building the application
-                    bat "dotnet build --configuration Release"
-                }
+                bat 'dotnet build --configuration Release --no-restore'
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    // Running tests
-                    bat "dotnet test --no-restore --configuration Release"
-                }
+                bat 'dotnet test --configuration Release --no-build --no-restore'
             }
         }
 
         stage('Publish') {
             steps {
-                script {
-                    // Publishing the application
-                    bat "dotnet publish --no-restore --configuration Release --output .\\publish"
-                }
+                bat 'dotnet publish --configuration Release --no-build --output publish'
             }
         }
     }
 
     post {
         success {
-            echo 'Build, test, and publish successful!'
+            echo '✅ Build, test, and publish successful!'
+        }
+        failure {
+            echo '❌ Something went wrong.'
         }
     }
 }
