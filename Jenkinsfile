@@ -35,6 +35,12 @@ pipeline {
                 bat 'dotnet publish --configuration Release --no-build --output publish'
             }
         }
+
+        stage('aetifacts') {
+            steps{
+                archiveArtifacts artifacts: 'publish/**', fingerprint: true
+            }
+        }
     }
 
     post {
