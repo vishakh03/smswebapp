@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    triggers {
+    // Fires as soon as GitHub sends a push event
+    githubPush()
+    }
+
     environment {
         PATH = "C:\\Windows\\System32;C:\\Program Files\\dotnet;${env.PATH}"
     }
