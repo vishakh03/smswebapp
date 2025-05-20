@@ -50,7 +50,7 @@ pipeline {
 
     post {
         success {
-            echo '✅ Build, test, and publish successful!'
+            echo '✅ Build, test, publish successful!'
         }
         failure {
             echo '❌ Something went wrong.'
