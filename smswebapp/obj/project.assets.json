@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Takneekigyanguru\\ASP.Net Code\\Project3\\webapp\\smswebapp\\smswebapp.csproj",
+      "projectUniqueName": "F:\\Takneekigyanguru\\ASP.Net Code\\Project6\\smswebapp\\smswebapp.csproj",
       "projectName": "smswebapp",
-      "projectPath": "F:\\Takneekigyanguru\\ASP.Net Code\\Project3\\webapp\\smswebapp\\smswebapp.csproj",
+      "projectPath": "F:\\Takneekigyanguru\\ASP.Net Code\\Project6\\smswebapp\\smswebapp.csproj",
       "packagesPath": "C:\\Users\\Anushree Mandal\\.nuget\\packages\\",
-      "outputPath": "F:\\Takneekigyanguru\\ASP.Net Code\\Project3\\webapp\\smswebapp\\obj\\",
+      "outputPath": "F:\\Takneekigyanguru\\ASP.Net Code\\Project6\\smswebapp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Anushree Mandal\\AppData\\Roaming\\NuGet\\NuGet.Config"
