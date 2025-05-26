@@ -31,7 +31,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'dotnet test --logger:"junit;LogFilePath=TestResults/test-results.xml"'
+                bat 'dotnet test smswebapp.tests/smswebapp.tests.csproj --logger:"junit;LogFilePath=TestResults/test-results.xml"'
             }
         }
 
