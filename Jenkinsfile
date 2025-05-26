@@ -31,7 +31,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'dotnet test --configuration Release --no-build --no-restore --'
+                bat 'dotnet test --configuration Release --no-build --no-restore --logger "junit;LogFilePath=TestResults.xml"'
             }
         }
 
@@ -51,6 +51,7 @@ pipeline {
     post {
         success {
             echo '✅ Build, test, publish successful!'
+            junit 'TestResults.xml'
         }
         failure {
             echo '❌ Something went wrong.'
