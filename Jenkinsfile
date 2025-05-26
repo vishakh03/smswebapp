@@ -31,7 +31,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'dotnet test smswebapp.tests/smswebapp.tests.csproj --logger:"junit;LogFilePath=TestResults/test-results.xml"'
+                bat 'dotnet test smswebapp.tests/smswebapp.tests.csproj --logger:"junit;LogFilePath=smswebapp.tests/TestResults/test-results.xml"'
             }
         }
 
@@ -51,8 +51,8 @@ pipeline {
    post {
     always {
         script {
-            if (fileExists('TestResults/test-results.xml')) {
-                junit 'TestResults/test-results.xml'
+            if (fileExists('smswebapp.tests/TestResults/test-results.xml')) {
+                junit 'smswebapp.tests/TestResults/test-results.xml'
             } else {
                 echo 'No test report files found.'
             }
