@@ -31,7 +31,8 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'dotnet test --configuration Release --no-build --no-restore --logger "junit;LogFilePath=TestResults.xml"'
+                bat 'mkdir TestResults'
+                bat 'dotnet test --logger:"junit;LogFilePath=TestResults/test-results.xml"'
             }
         }
 
@@ -48,13 +49,16 @@ pipeline {
         }
     }
 
-    post {
-        success {
-            echo '✅ Build, test, publish successful!'
-            junit 'TestResults.xml'
-        }
-        failure {
-            echo '❌ Something went wrong.'
+   post {
+    always {
+        script {
+            if (fileExists('TestResults/test-results.xml')) {
+                junit 'TestResults/test-results.xml'
+            } else {
+                echo 'No test report files found.'
+            }
         }
     }
+   }
+    
 }
