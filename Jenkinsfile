@@ -1,8 +1,13 @@
 pipeline {
     agent any
 
+    triggers {
+    // Fires as soon as GitHub sends a push event
+    githubPush()
+    }
+
     environment {
-        DOTNET_CLI_HOME = "C:\\Program Files\\dotnet"
+        PATH = "C:\\Windows\\System32;C:\\Program Files\\dotnet;${env.PATH}"
     }
 
     stages {
@@ -12,41 +17,43 @@ pipeline {
             }
         }
 
+        stage('Restore') {
+            steps {
+                bat 'dotnet restore'
+            }
+        }
+
         stage('Build') {
             steps {
-                script {
-                    // Restoring dependencies
-                    //bat "cd ${DOTNET_CLI_HOME} && dotnet restore"
-                    bat "dotnet restore"
-
-                    // Building the application
-                    bat "dotnet build --configuration Release"
-                }
+                bat 'dotnet build --configuration Release --no-restore'
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    // Running tests
-                    bat "dotnet test --no-restore --configuration Release"
-                }
+                bat 'dotnet test --configuration Release --no-build --no-restore'
             }
         }
 
         stage('Publish') {
             steps {
-                script {
-                    // Publishing the application
-                    bat "dotnet publish --no-restore --configuration Release --output .\\publish"
-                }
+                bat 'dotnet publish --configuration Release --no-build --output publish'
+            }
+        }
+
+        stage('aetifacts') {
+            steps{
+                archiveArtifacts artifacts: 'publish/**', fingerprint: true
             }
         }
     }
 
     post {
         success {
-            echo 'Build, test, and publish successful!'
+            echo '✅ Build, test, publish successful!'
+        }
+        failure {
+            echo '❌ Something went wrong.'
         }
     }
 }
