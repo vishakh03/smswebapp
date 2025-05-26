@@ -31,7 +31,6 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'mkdir TestResults'
                 bat 'dotnet test --logger:"junit;LogFilePath=TestResults/test-results.xml"'
             }
         }
