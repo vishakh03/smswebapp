@@ -34,7 +34,7 @@ pipeline {
                 //bat 'dotnet test --configuration Release --no-restore --no-build --logger:"junit;LogFilePath=smswebapp.tests/TestResults/test-results.xml"'
 
                 //multi branch pipeline
-                bat 'dotnet test --configuration Release --no-restore --no-build --logger:"junit;LogFilePath=hpipeline_trail_featureNunittest/smswebapp.tests/smswebapp.tests/TestResults/test-results.xml"'
+                bat 'dotnet test --configuration Release --no-restore --no-build --logger:"junit;LogFilePath=smswebapp.tests/smswebapp.tests/TestResults/test-results.xml"'
             }
         }
 
@@ -59,8 +59,8 @@ pipeline {
                 //junit '**/TestResults/*.xml'
 
             //Multibranch pipeline
-            if (fileExists('hpipeline_trail_featureNunittest/smswebapp.tests/smswebapp.tests/TestResults/test-results.xml')) {
-                junit 'hpipeline_trail_featureNunittest/smswebapp.tests/smswebapp.tests/TestResults/test-results.xml' 
+            if (fileExists('smswebapp.tests/smswebapp.tests/TestResults/test-results.xml')) {
+                junit 'smswebapp.tests/smswebapp.tests/TestResults/test-results.xml' 
             } else {
                 echo 'No test report files found.'
             }
