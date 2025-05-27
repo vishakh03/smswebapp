@@ -52,7 +52,9 @@ pipeline {
     always {
         script {
             if (fileExists('smswebapp.tests/TestResults/test-results.xml')) {
-                junit 'smswebapp.tests/TestResults/test-results.xml'
+                //junit 'smswebapp.tests/TestResults/test-results.xml'
+                junit '**/TestResults/*.xml'
+
             } else {
                 echo 'No test report files found.'
             }
