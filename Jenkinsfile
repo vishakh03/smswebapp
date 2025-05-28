@@ -1,59 +1,63 @@
-pipeline {
-    agent any
+@Library('my-shared-library') _
 
-    triggers {
-    // Fires as soon as GitHub sends a push event
-    githubPush()
-    }
+ciPipeline()
 
-    environment {
-        PATH = "C:\\Windows\\System32;C:\\Program Files\\dotnet;${env.PATH}"
-    }
+// pipeline {
+//     agent any
 
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+//     triggers {
+//     // Fires as soon as GitHub sends a push event
+//     githubPush()
+//     }
 
-        stage('Restore') {
-            steps {
-                bat 'dotnet restore'
-            }
-        }
+//     environment {
+//         PATH = "C:\\Windows\\System32;C:\\Program Files\\dotnet;${env.PATH}"
+//     }
 
-        stage('Build') {
-            steps {
-                bat 'dotnet build --configuration Release --no-restore'
-            }
-        }
+//     stages {
+//         stage('Checkout') {
+//             steps {
+//                 checkout scm
+//             }
+//         }
 
-        stage('Test') {
-            steps {
-                bat 'dotnet test --configuration Release --no-build --no-restore'
-            }
-        }
+//         stage('Restore') {
+//             steps {
+//                 bat 'dotnet restore'
+//             }
+//         }
 
-        stage('Publish') {
-            steps {
-                bat 'dotnet publish --configuration Release --no-build --output publish'
-            }
-        }
+//         stage('Build') {
+//             steps {
+//                 bat 'dotnet build --configuration Release --no-restore'
+//             }
+//         }
 
-        stage('aetifacts') {
-            steps{
-                archiveArtifacts artifacts: 'publish/**', fingerprint: true
-            }
-        }
-    }
+//         stage('Test') {
+//             steps {
+//                 bat 'dotnet test --configuration Release --no-build --no-restore'
+//             }
+//         }
 
-    post {
-        success {
-            echo '✅ Build, test, publish successful!'
-        }
-        failure {
-            echo '❌ Something went wrong.'
-        }
-    }
-}
+//         stage('Publish') {
+//             steps {
+//                 bat 'dotnet publish --configuration Release --no-build --output publish'
+//             }
+//         }
+
+//         stage('aetifacts') {
+//             steps{
+//                 archiveArtifacts artifacts: 'publish/**', fingerprint: true
+//             }
+//         }
+//     }
+
+//     post {
+//         success {
+//             echo '✅ Build, test, publish successful!'
+//         }
+//         failure {
+//             echo '❌ Something went wrong.'
+//         }
+//     }
+// }
