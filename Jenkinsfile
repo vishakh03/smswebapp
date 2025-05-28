@@ -25,35 +25,35 @@ pipeline {
         stage('Restore') {
             steps {
                // bat 'dotnet restore'
-              restore('restore')
+              restore()
             }
         }
 
         stage('Build') {
             steps {
                // bat 'dotnet build --configuration Release --no-restore'
-              build('job')
+              build(job)
             }
         }
 
         stage('Test') {
             steps {
                 //bat 'dotnet test --configuration Release --no-build --no-restore'
-                test('test')
+                test()
             }
         }
 
         stage('Publish') {
             steps {
                // bat 'dotnet publish --configuration Release --no-build --output publish'
-              publish('publish')
+              publish()
             }
         }
 
         stage('aetifacts') {
             steps{
                 //archiveArtifacts artifacts: 'publish/**', fingerprint: true
-              artifacts('artifacts')
+              artifacts()
             }
         }
     }
