@@ -65,6 +65,8 @@ pipeline {
         // failure {
         //     echo '❌ Something went wrong.'
         // }
+        always {
         postAction()
+        }
     }
 }
