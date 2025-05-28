@@ -59,14 +59,11 @@ pipeline {
     }
 
     post {
-        // success {
-        //     echo '✅ Build, test, publish successful!'
-        // }
-        // failure {
-        //     echo '❌ Something went wrong.'
-        // }
-        always {
-        postAction()
+        success {
+            echo '✅ Build, test, publish successful!'
+        }
+        failure {
+            echo '❌ Something went wrong.'
         }
     }
 }
