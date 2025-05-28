@@ -36,7 +36,9 @@ pipeline {
                 //bat 'dotnet test --configuration Release --no-restore --no-build --logger:"junit;LogFilePath=smswebapp.tests/TestResults/test-results.xml"'
 
                 //multi branch pipeline
-                bat 'dotnet test --configuration Release --no-restore --no-build --logger:"junit;LogFilePath=smswebapp.tests/smswebapp.tests/TestResults/test-results.xml"'
+                //bat 'dotnet test --configuration Release --no-restore --no-build --logger:"junit;LogFilePath=smswebapp.tests/smswebapp.tests/TestResults/test-results.xml"'
+               
+                test()  //shared Library
             }
         }
 
@@ -61,11 +63,13 @@ pipeline {
                 //junit '**/TestResults/*.xml'
 
             //Multibranch pipeline
-            if (fileExists('smswebapp.tests/smswebapp.tests/TestResults/test-results.xml')) {
-                junit 'smswebapp.tests/smswebapp.tests/TestResults/test-results.xml' 
-            } else {
-                echo 'No test report files found.'
-            }
+            // if (fileExists('smswebapp.tests/smswebapp.tests/TestResults/test-results.xml')) {
+            //     junit 'smswebapp.tests/smswebapp.tests/TestResults/test-results.xml' 
+            // } else {
+            //     echo 'No test report files found.'
+            // }
+
+            postAction()  //shared Library
         }
     }
    }
